@@ -1,0 +1,19 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "EnforceS3TlsVersion",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:*",
+            "Resource": "*",
+            "Condition": {                
+                "NumericLessThan": {
+                    "s3:TlsVersion": [
+                        "1.2"
+                    ]
+                }
+            }
+        }
+    ]
+}
