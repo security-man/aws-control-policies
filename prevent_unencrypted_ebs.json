@@ -1,0 +1,62 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyEC2LaunchWithoutEBSEncryption",
+      "Effect": "Deny",
+      "Action": [
+        "ec2:RunInstances"
+      ],
+      "Resource": [
+        "arn:aws:ec2:*:*:volume/*"
+      ],
+      "Condition": {
+        "Bool": {
+          "ec2:Encrypted": "false"
+        }
+      }
+    },
+    {
+      "Sid": "DenyEC2LaunchWithoutEncryptionByDefault",
+      "Effect": "Deny",
+      "Action": [
+        "ec2:RunInstances"
+      ],
+      "Resource": [
+        "arn:aws:ec2:*:*:volume/*"
+      ],
+      "Condition": {
+        "Null": {
+          "ec2:Encrypted": "true"
+        }
+      }
+    },
+    {
+      "Sid": "DenyVolumeCreationWithoutEncryption",
+      "Effect": "Deny",
+      "Action": [
+        "ec2:CreateVolume"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "Bool": {
+          "ec2:Encrypted": "false"
+        }
+      }
+    },
+    {
+      "Sid": "DenyLaunchTemplateWithoutEncryption",
+      "Effect": "Deny",
+      "Action": [
+        "ec2:CreateLaunchTemplate",
+        "ec2:CreateLaunchTemplateVersion"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "Bool": {
+          "ec2:Encrypted": "false"
+        }
+      }
+    }
+  ]
+}

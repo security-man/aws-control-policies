@@ -1,0 +1,14 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Deny",
+      "Action": [
+        "iam:DeleteRole",
+        "iam:DeleteRolePolicy",
+        "iam:DetachRolePolicy"
+      ],
+      "Resource": "arn:aws:iam::*:role/{IAM_ROLE_NAME}"
+    }
+  ]
+}
