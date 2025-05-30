@@ -12,7 +12,7 @@ For SCPs and RCPs, the administrator must still attach identity-based policies t
 The policy ['iam_role_deletion_protection.json'](scps/iam_role_deletion_protection.json) ensures that IAM roles of a specific name cannot be deleted or modified by any IAM user once created. This control aims to prevent local IAM users / roles from deleting or modifying cross-account administrator roles. This is useful in the event of a sub-account compromise to prevent would-be attackers from revoking administrator access to system administrators.
 
 ## Prevent launching EC2 instances without IMDSv2
-The policy ['prevent_imdv2_ec2s.json'](scps/prevent_imdv2_ec2s.json) ensures that EC2 instances cannot be launched with Instance Metadata V1 (IMDV1). Instead, only IMDV2 is allowed (IMDV1 is known to be vulnerable and is only persisted as an option for legacy purposes).
+The policy ['restrict_IMDSv1.json'](scps/restrict_IMDSv1.json) ensures that EC2 instances cannot be launched with Instance Metadata v1 (IMDv1). Instead, only IMDV2 is allowed (IMDv1 is known to be vulnerable and is only persisted as an option for legacy purposes).
 
 ## Prevent launching EC2 instances without EBS encryption
 The policy ['prevent_unencrypted_ebs.json'](scps/prevent_unencrypted_ebs.json) ensures that EC2 instances cannot be launched with unencrypted EBS volumes.
