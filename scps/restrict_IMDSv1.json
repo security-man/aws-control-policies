@@ -32,6 +32,11 @@
    {
       "Effect":"Deny",
       "Action":"ec2:ModifyInstanceMetadataOptions",
-      "Resource":"*"
+      "Resource":"*",
+      "Condition":{
+         "StringNotEquals":{
+            "ec2:Attribute/HttpTokens":"required"
+         }
+      }
    }
 ]
